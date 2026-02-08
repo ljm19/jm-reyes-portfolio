@@ -7,15 +7,43 @@ body {
   line-height: 1.6;
 }
 
+.two-col {
+  display: flex;
+  align-items: center;
+  gap: 20px;               /* spacing between columns */
+  flex-wrap: wrap;          /* stack on smaller screens */
+  max-width: 1000px;        /* match your section width */
+  margin: 0 auto;           /* center on page */
+  padding: 0 20px;          /* same horizontal padding as your sections */
+}
+
+.image-col,
+.text-col {
+  flex: 1;
+  max-width: 480px;         /* reduce column width so it doesn’t stretch too much */
+}
+
+.image-col img {
+  width:80% ;
+  border-radius: 12px;      /* match your card style */
+}
+
+
+
+
 a { color: #4ade80; text-decoration: none; }
 
-h1, h2, h3 { margin: 0; }
+h1, h2, h3, h4 { margin: 0; }
 
 section { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
 .container { display: flex; flex-wrap: wrap; gap: 20px; }
 
+.experience { display: flex; flex-direction:column; gap: 20px; }
+
 .card { background-color: #1a1a1a; border-radius: 12px; padding: 20px; flex: 1 1 300px; }
+
+.experience-card { background-color: #1a1a1a; border-radius: 12px; padding: 20px; }
 
 .btn {
   display: inline-block;
@@ -35,6 +63,96 @@ header p { margin: 5px 0; }
 
 footer { text-align: center; padding: 20px; background-color: #111; color: #888; }
 
+.tools-carousel {
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 20s linear infinite; /* controls speed */
+}
+
+/* Tool card styling */
+.tool-card {
+  flex: 0 0 auto;
+  background-color: #1a1a1a;
+  padding: 15px 25px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  cursor: default;
+  transition: transform 0.2s;
+}
+
+.tool-card:hover {
+  transform: scale(1.05);
+}
+
+/* Scroll animation */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* scroll half the track (since repeated) */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .carousel-track {
+    gap: 15px;
+  }
+
+  .tool-card {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+
+.tool-card:hover {
+  transform: scale(1.05);
+}
+
+/* Scroll animation */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* scroll half the track (since repeated) */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .carousel-track {
+    gap: 15px;
+  }
+
+  .tool-card {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+
 @media(max-width: 600px) {
   .container { flex-direction: column; }
+ .two-col {
+    flex-direction: column;  /* stack vertically */
+    align-items: center;     /* center items when stacked */
+  }
+
+  .image-col img {
+    width: 100%;
+    max-width: 250px;        /* smaller image on mobile */
+    height: auto;            /* natural height on mobile */
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .text-col {
+    width: 100%;
+    max-width: 480px;
+  }
 }
+
