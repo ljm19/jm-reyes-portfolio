@@ -63,18 +63,6 @@ header p { margin: 5px 0; }
 
 footer { text-align: center; padding: 20px; background-color: #111; color: #888; }
 
-.tools-carousel {
-  overflow: hidden;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px 0;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  animation: scroll-left 5s linear infinite; /* controls speed */
-}
 
 /* Tool card styling */
 .tool-card {
@@ -93,39 +81,41 @@ footer { text-align: center; padding: 20px; background-color: #111; color: #888;
   transform: scale(1.05);
 }
 
-/* Scroll animation */
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* scroll half the track (since repeated) */
+.carousel {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 80%;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .carousel-track {
-    gap: 15px;
-  }
-
-  .tool-card {
-    padding: 12px 20px;
-    font-size: 14px;
-  }
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;            /* important */
+  animation: scroll-left 20s linear infinite;
+  will-change: transform;        /* smoother */
+  padding-bottom: 20px;
 }
 
+.tool-card {
+  flex: 0 0 auto;                /* prevents shrinking */
+  transition: transform 0.3s ease;
+}
 
 .tool-card:hover {
   transform: scale(1.05);
 }
 
-/* Scroll animation */
+/* Seamless scroll */
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* scroll half the track (since repeated) */
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .carousel-track {
     gap: 15px;
+    padding-bottom: 10px;
   }
 
   .tool-card {
@@ -133,6 +123,8 @@ footer { text-align: center; padding: 20px; background-color: #111; color: #888;
     font-size: 14px;
   }
 }
+
+
 
 
 @media(max-width: 600px) {
